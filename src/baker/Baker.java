@@ -28,8 +28,11 @@ public class Baker {
         
         ProductController controll = new ProductController();
         
-        controll.save(dados);
+//        controll.save(dados);
 
+        dados = controll.recover(1);
+        System.out.println("Retorno do recuperar " +  dados[0]);
+        System.out.println("Fim");
     }
     
 }

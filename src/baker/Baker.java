@@ -22,15 +22,15 @@ public class Baker {
         String dados[] = new String[4];
         
         dados[0] = "0";
-        dados[1] = "Pão";
-        dados[2] = "0.40";
-        dados[3] = "und";
+        dados[1] = "Teste";
+        dados[2] = "0.00";
+        dados[3] = "tst";
         
         ProductController controll = new ProductController();
         
 //        controll.save(dados);
 
-        dados = controll.recover(1);
+        dados = controll.recover(3);
         System.out.println("Retorno do recuperar " +  dados[0]);
         System.out.println("Fim");
     }

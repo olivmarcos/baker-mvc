@@ -54,6 +54,7 @@ public class ProductModel {
         vetor[1] = getName();
         vetor[2] = String.valueOf(getPrice());
         vetor[3] = getUnity();
+        
         return vetor;
     }
     

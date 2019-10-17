@@ -52,6 +52,8 @@ public class ProductDao {
             prod.setName(result.getString("prd_name"));
             prod.setPrice(result.getDouble("prd_price"));
             prod.setUnity(result.getString("prd_unity"));
+            
+            return prod;
         } catch (SQLException e) {
              Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, e);
         }

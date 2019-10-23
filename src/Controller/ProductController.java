@@ -34,4 +34,22 @@ public class ProductController {
         
         return prod.toVetor();
     }
+    
+    public void update(String[] dados) {
+        ProductModel prod = new ProductModel();
+        prod.vetorTo(dados);
+        
+        ProductDao Dao  = new ProductDao();
+        
+        if (prod.getId() == 0) {
+            Dao.insert(prod);
+        } else {
+            Dao.update(prod);
+        }
+    }
+    
+    public void delete(int id) {
+        ProductDao Dao = new ProductDao();
+        Dao.delete(id);
+    }
 }

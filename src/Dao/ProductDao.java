@@ -32,16 +32,16 @@ public class ProductDao {
             
             pst.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Erro ao salvar o r egistro " + e.getMessage());
+            System.out.println("Erro ao salvar o registro " + e.getMessage());
         }
     }
     
     public ProductModel recover(int id) {
-        Connection con = Dao.FabricaConexao.GeraConexao();
         
         String sql = "SELECT prd_id, prd_name, prd_price, prd_unity FROM TBL_PRODUCT WHERE prd_id = ?";
         
         try {
+            Connection con = Dao.FabricaConexao.GeraConexao();
             PreparedStatement stp = con.prepareStatement(sql);
             stp.setInt(1, id);
             ResultSet result = stp.executeQuery();
@@ -61,11 +61,36 @@ public class ProductDao {
     }
     
     public void update(ProductModel prod) {
+        String sql = "UPDATE TBL_PRODUCT SET prd_name = ?, prd_price = ?, prd_unity = ? WHERE prd_id = ?";
         
+        try {
+            Connection con = Dao.FabricaConexao.GeraConexao();
+            PreparedStatement stp = con.prepareStatement(sql);
+            
+            stp.setString(1, prod.getName());
+            stp.setDouble(2, prod.getPrice());
+            stp.setString(3, prod.getUnity());
+            stp.setInt(1, prod.getId());
+
+            stp.executeUpdate();
+        } catch (Exception e) {
+            Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, e);
+
+        }
     }
     
     public void delete(int id) {
+        String sql = "DELETE FROM TBL_PRODUCT WHERE prd_id = ?";
         
+        try {
+            Connection con = Dao.FabricaConexao.GeraConexao();
+            PreparedStatement stp = con.prepareStatement(sql);
+            
+            stp.setInt(1, id);
+            stp.execute();
+        } catch (Exception e) {
+            Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
     
     public List<ProductModel> recoverAll() {

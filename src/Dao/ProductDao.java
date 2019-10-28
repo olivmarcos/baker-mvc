@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -66,16 +67,17 @@ public class ProductDao {
         try {
             Connection con = Dao.FabricaConexao.GeraConexao();
             PreparedStatement stp = con.prepareStatement(sql);
-            
+
+
             stp.setString(1, prod.getName());
             stp.setDouble(2, prod.getPrice());
             stp.setString(3, prod.getUnity());
-            stp.setInt(1, prod.getId());
+            stp.setInt(4, prod.getId());
+
 
             stp.executeUpdate();
         } catch (Exception e) {
             Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, e);
-
         }
     }
     
@@ -93,7 +95,33 @@ public class ProductDao {
         }
     }
     
-    public List<ProductModel> recoverAll() {
+    public ArrayList<ProductModel> recoverAll() {
+        String sql = "SELECT * FROM TBL_PRODUCT";
+        ArrayList<ProductModel> products = new ArrayList<ProductModel>();
+        
+        try {
+            Connection con = Dao.FabricaConexao.GeraConexao();
+            PreparedStatement stp = con.prepareStatement(sql);
+
+            ResultSet result = stp.executeQuery();
+           
+            while (result.next())
+            {
+                ProductModel prod = new ProductModel();
+
+                prod.setId(result.getInt("prd_id"));
+                prod.setName(result.getString("prd_name"));
+                prod.setPrice(result.getDouble("prd_price"));
+                prod.setUnity(result.getString("prd_unity"));
+        
+                products.add(prod);
+            }
+            return products;
+
+        } catch (SQLException ex) {
+
+            System.err.println(ex.getMessage());
+        }
         return null;
     }
 }

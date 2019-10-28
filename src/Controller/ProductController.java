@@ -7,6 +7,7 @@ package Controller;
 
 import Dao.ProductDao;
 import Models.ProductModel;
+import java.util.ArrayList;
 
 /**
  *
@@ -51,5 +52,17 @@ public class ProductController {
     public void delete(int id) {
         ProductDao Dao = new ProductDao();
         Dao.delete(id);
+    }
+    
+    public String[][] recoverAll() {
+        ProductDao Dao = new ProductDao();
+        
+        ArrayList<ProductModel> listProduct = Dao.recoverAll();
+        
+        String[][] matrizReturn = new String[listProduct.size()][4];
+        for (int i = 0; i < listProduct.size(); i++) {
+            matrizReturn[i] = listProduct.get(i).toVetor();
+        }
+        return matrizReturn;
     }
 }

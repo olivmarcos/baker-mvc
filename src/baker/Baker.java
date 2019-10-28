@@ -8,7 +8,9 @@ package baker;
 import Controller.ProductController;
 import Dao.FabricaConexao;
 import Dao.ProductDao;
+import Models.ProductModel;
 import java.sql.Connection;
+import java.util.ArrayList;
 
 /**
  *
@@ -22,22 +24,33 @@ public class Baker {
     public static void main(String[] args) {
         String dados[] = new String[4];
         
-        dados[0] = "0";
-        dados[1] = "Teste2";
+        dados[0] = "4";
+        dados[1] = "Teste22342";
         dados[2] = "0.02";
         dados[3] = "testando";
+  
         
         ProductController controll = new ProductController();
         
-//        controll.save(dados);
-
-        controll.update(dados);
-    
-        dados = controll.recover(4);
-        controll.delete(5);
+        //controll.save(dados);
         
-        System.out.println("Retorno do recuperar " +  dados[0] + ": Nome: " + dados[1] + ", Preço: " + dados[2] + ", Unidade: " + dados[3]);
-        System.out.println("Fim");
+
+        String[][] products = controll.recoverAll();
+        for (int i = 0; i < products.length; i++) {
+            System.out.println("" + products[i][0]);
+        }
+//        controll.update(dados);
+//    
+//        dados = controll.recover(4);  
+//        controll.delete(5);
+//        
+       /* ProductDao teste = new ProductDao();
+        
+        teste.recoverAll();
+        
+        for (ProductModel pr : teste.recoverAll()){
+            System.out.println("Teste" + pr.getName());
+        }*/
         
     }
     

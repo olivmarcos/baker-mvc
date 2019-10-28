@@ -9,6 +9,7 @@ import Controller.ProductController;
 import Dao.FabricaConexao;
 import Dao.ProductDao;
 import Models.ProductModel;
+import Views.ProductView;
 import java.sql.Connection;
 import java.util.ArrayList;
 
@@ -22,7 +23,7 @@ public class Baker {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        String dados[] = new String[4];
+       /* String dados[] = new String[4];
         
         dados[0] = "4";
         dados[1] = "Teste22342";
@@ -30,15 +31,15 @@ public class Baker {
         dados[3] = "testando";
   
         
-        ProductController controll = new ProductController();
+        ProductController controll = new ProductController();*/
         
         //controll.save(dados);
         
 
-        String[][] products = controll.recoverAll();
+       /* String[][] products = controll.recoverAll();
         for (int i = 0; i < products.length; i++) {
             System.out.println("" + products[i][0]);
-        }
+        }*/
 //        controll.update(dados);
 //    
 //        dados = controll.recover(4);  
@@ -51,6 +52,9 @@ public class Baker {
         for (ProductModel pr : teste.recoverAll()){
             System.out.println("Teste" + pr.getName());
         }*/
+       
+        ProductView tela = new ProductView();
+        tela.setVisible(true);
         
     }
     

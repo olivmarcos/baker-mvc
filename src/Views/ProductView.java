@@ -71,17 +71,52 @@ public class ProductView extends javax.swing.JFrame {
 
         jLabel2.setText("Name");
 
+        nameInput.setEnabled(false);
+
         jLabel3.setText("Price");
+
+        priceInput.setEnabled(false);
 
         jLabel4.setText("Unity");
 
+        unityInput.setEnabled(false);
+
         btnNew.setText("Novo");
+        btnNew.setEnabled(false);
+        btnNew.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNewMouseClicked(evt);
+            }
+        });
+        btnNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewActionPerformed(evt);
+            }
+        });
 
         btnSave.setText("Save");
+        btnSave.setEnabled(false);
+        btnSave.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSaveMouseClicked(evt);
+            }
+        });
 
         btnCancel.setText("Cancel");
+        btnCancel.setEnabled(false);
+        btnCancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCancelMouseClicked(evt);
+            }
+        });
 
         btnDelete.setText("Delete");
+        btnDelete.setEnabled(false);
+        btnDelete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDeleteMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -184,7 +219,7 @@ public class ProductView extends javax.swing.JFrame {
         ProductController controll = new ProductController();
         String[] dados = controll.recover(Integer.parseInt(codInput.getText()));
         
-        if(dados[0].equals(""))
+        if(dados[0].equals("0"))
         {
             JOptionPane.showMessageDialog(null, "Não foi encontrado nenhum registro");
         }
@@ -193,10 +228,72 @@ public class ProductView extends javax.swing.JFrame {
             nameInput.setText(dados[1]);
             priceInput.setText(dados[2]);
             unityInput.setText(dados[3]);
+            
+            nameInput.setEnabled(true);
+            priceInput.setEnabled(true);
+            unityInput.setEnabled(true);
+            
+            btnDelete.setEnabled(true);
         
-            codInput.requestFocus();
+//            codInput.requestFocus();
         }
     }//GEN-LAST:event_codInputFocusLost
+
+    private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
+        
+    }//GEN-LAST:event_btnNewActionPerformed
+
+    private void btnNewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewMouseClicked
+        btnNew.setEnabled(true);
+        btnSave.setEnabled(true);
+        btnCancel.setEnabled(true);
+        btnDelete.setEnabled(false);
+        
+        nameInput.setEnabled(true);
+        priceInput.setEnabled(true);
+        unityInput.setEnabled(true);
+        
+        limparTela();
+    }//GEN-LAST:event_btnNewMouseClicked
+
+    private void btnDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteMouseClicked
+        
+        btnDelete.requestFocus();
+        ProductController controll = new ProductController();
+        Integer cod = Integer.parseInt(codInput.getText());
+        
+        if(controll.delete(cod))
+        {
+            limparTela();
+            JOptionPane.showMessageDialog(null, "Registro removido com sucesso");
+        }
+        else
+            JOptionPane.showMessageDialog(null, "Erro ao remover o registro");
+    }//GEN-LAST:event_btnDeleteMouseClicked
+
+    private void btnCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseClicked
+        limparTela();
+    }//GEN-LAST:event_btnCancelMouseClicked
+
+    private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
+        btnSave.requestFocus();        
+        String dados[] = new String[4];
+        
+        dados[0] = codInput.getText();
+        dados[1] = nameInput.getText();
+        dados[2] = priceInput.getText();
+        dados[3] = unityInput.getText();
+        
+        ProductController controll = new ProductController();
+        
+        if(controll.save(dados))
+        {
+            JOptionPane.showMessageDialog(null, "Registro inserido com sucesso");
+            limparTela();
+        }
+        else
+            JOptionPane.showMessageDialog(null, "Registro atualizado com sucesso");
+    }//GEN-LAST:event_btnSaveMouseClicked
 
     /**
      * @param args the command line arguments
@@ -231,6 +328,13 @@ public class ProductView extends javax.swing.JFrame {
                 new ProductView().setVisible(true);
             }
         });
+    }
+    
+    public void limparTela(){
+        codInput.setText("");
+        nameInput.setText("");
+        priceInput.setText("");
+        unityInput.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

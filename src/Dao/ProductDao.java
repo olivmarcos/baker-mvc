@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  */
 public class ProductDao {
     
-    public void insert(ProductModel prod) {
+    public boolean insert(ProductModel prod) {
         
         String sql = "INSERT INTO TBL_PRODUCT(prd_name, prd_price, prd_unity) VALUES (?, ?, ?)"; 
         
@@ -32,9 +32,12 @@ public class ProductDao {
             pst.setString(3, prod.getUnity());
             
             pst.executeUpdate();
+            return true;
         } catch (SQLException e) {
             System.out.println("Erro ao salvar o registro " + e.getMessage());
         }
+        
+        return false;
     }
     
     public ProductModel recover(int id) {
@@ -81,7 +84,7 @@ public class ProductDao {
         }
     }
     
-    public void delete(int id) {
+    public boolean delete(int id) {
         String sql = "DELETE FROM TBL_PRODUCT WHERE prd_id = ?";
         
         try {
@@ -90,9 +93,12 @@ public class ProductDao {
             
             stp.setInt(1, id);
             stp.execute();
+            
+            return true;
         } catch (Exception e) {
             Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, e);
         }
+        return false;
     }
     
     public ArrayList<ProductModel> recoverAll() {

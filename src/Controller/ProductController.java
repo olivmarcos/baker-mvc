@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class ProductController {
     
-    public void save(String[] dados) {
+    public boolean save(String[] dados) {
         ProductModel prod = new ProductModel();
         prod.vetorTo(dados);
         
@@ -23,8 +23,10 @@ public class ProductController {
         
         if (prod.getId() == 0) {
             Dao.insert(prod);
+            return true;
         } else {
             Dao.update(prod);
+            return false;
         }
     }
     
@@ -49,9 +51,13 @@ public class ProductController {
         }
     }
     
-    public void delete(int id) {
+    public boolean delete(int id) {
         ProductDao Dao = new ProductDao();
-        Dao.delete(id);
+        if (Dao.delete(id)){
+            return true;
+        }
+        return false;
+   
     }
     
     public String[][] recoverAll() {

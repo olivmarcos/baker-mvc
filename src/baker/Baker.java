@@ -94,13 +94,16 @@ public class Baker {
 //        else
 //            System.out.println("Not ok");
 //    }
-        ClienteController controll = new ClienteController();
+//        ClienteController controll = new ClienteController();
+//
+//        if (controll.delete(1)) {
+//            System.out.println("ok");
+//        } else {
+//            System.out.println("not ok");
+//        }
 
-        if (controll.delete(1)) {
-            System.out.println("ok");
-        } else {
-            System.out.println("not ok");
-        }
+        ProductView tela = new ProductView();
+        tela.setVisible(true);
 
     }
 }

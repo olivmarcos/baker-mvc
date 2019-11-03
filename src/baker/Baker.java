@@ -5,10 +5,16 @@
  */
 package baker;
 
+import Controller.ClienteController;
 import Controller.ProductController;
+import Controller.VendedorController;
+import Dao.ClienteDao;
 import Dao.FabricaConexao;
 import Dao.ProductDao;
+import Dao.VendedorDao;
+import Models.ClienteModel;
 import Models.ProductModel;
+import Models.VendedorModel;
 import Views.ProductView;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -23,7 +29,7 @@ public class Baker {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       /* String dados[] = new String[4];
+        /* String dados[] = new String[4];
         
         dados[0] = "4";
         dados[1] = "Teste22342";
@@ -32,11 +38,9 @@ public class Baker {
   
         
         ProductController controll = new ProductController();*/
-        
-        //controll.save(dados);
-        
 
-       /* String[][] products = controll.recoverAll();
+        //controll.save(dados);
+        /* String[][] products = controll.recoverAll();
         for (int i = 0; i < products.length; i++) {
             System.out.println("" + products[i][0]);
         }*/
@@ -45,17 +49,58 @@ public class Baker {
 //        dados = controll.recover(4);  
 //        controll.delete(5);
 //        
-       /* ProductDao teste = new ProductDao();
+        /* ProductDao teste = new ProductDao();
         
         teste.recoverAll();
         
         for (ProductModel pr : teste.recoverAll()){
             System.out.println("Teste" + pr.getName());
         }*/
-       
-        ProductView tela = new ProductView();
-        tela.setVisible(true);
-        
+//        ProductView tela = new ProductView();
+//        tela.setVisible(true);
+//        VendedorDao teste = new VendedorDao();
+//        VendedorModel me = new VendedorModel();
+//        
+//        me.setName("marcos");
+//        me.setEmpresa("empresa");
+//        me.setCpf(1235478);
+//        
+//        if(teste.insert(me))
+//        {
+//            System.out.println("ok");
+//        }
+//        else
+//            System.out.println("Not ok");
+//        VendedorController controll = new VendedorController();
+//        
+//        if(controll.delete(1))
+//        {
+//            System.out.println("ok");
+//        }
+//        else
+//            System.out.println("not ok");
+//        
+//        ClienteDao teste = new ClienteDao();
+//        ClienteModel me = new ClienteModel();
+//        
+//        me.setName("marcos");
+//        me.setEndereco("Rua Coronel Galdino Andrade, n 225, Bairro Avelino Cardoso");
+//        me.setCpf(1235478);
+//        
+//        if(teste.insert(me))
+//        {
+//            System.out.println("ok");
+//        }
+//        else
+//            System.out.println("Not ok");
+//    }
+        ClienteController controll = new ClienteController();
+
+        if (controll.delete(1)) {
+            System.out.println("ok");
+        } else {
+            System.out.println("not ok");
+        }
+
     }
-    
 }

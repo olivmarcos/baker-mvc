@@ -15,6 +15,7 @@ import Dao.VendedorDao;
 import Models.ClienteModel;
 import Models.ProductModel;
 import Models.VendedorModel;
+import Views.ClienteView;
 import Views.ProductView;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -29,17 +30,17 @@ public class Baker {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        /* String dados[] = new String[4];
-        
-        dados[0] = "4";
-        dados[1] = "Teste22342";
-        dados[2] = "0.02";
-        dados[3] = "testando";
-  
-        
-        ProductController controll = new ProductController();*/
-
-        //controll.save(dados);
+//         String dados[] = new String[4];
+//        
+//        dados[0] = "0";
+//        dados[1] = "Teste22342";
+//        dados[2] = "Rua Teste";
+//        dados[3] = "122544";
+//  
+//        
+//        ClienteController controll = new ClienteController();
+//
+//        controll.save(dados);
         /* String[][] products = controll.recoverAll();
         for (int i = 0; i < products.length; i++) {
             System.out.println("" + products[i][0]);
@@ -102,7 +103,9 @@ public class Baker {
 //            System.out.println("not ok");
 //        }
 
-        ProductView tela = new ProductView();
+        ClienteView tela = new ClienteView();
+        ProductView tela2 = new ProductView();
+
         tela.setVisible(true);
 
     }

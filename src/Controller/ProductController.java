@@ -57,7 +57,6 @@ public class ProductController {
             return true;
         }
         return false;
-   
     }
     
     public String[][] recoverAll() {
@@ -70,5 +69,37 @@ public class ProductController {
             matrizReturn[i] = listProduct.get(i).toVetor();
         }
         return matrizReturn;
+    }
+ 
+    public String[] recoverLast() {
+        ProductDao Dao = new ProductDao();
+        
+        ProductModel prod = Dao.recoverLast();
+        
+        return prod.toVetor();
+    }
+    
+    public String[] recoverFirst() {
+        ProductDao Dao = new ProductDao();
+        
+        ProductModel prod = Dao.recoverFirst();
+        
+        return prod.toVetor();
+    }
+    
+    public String[] recoverNext(int id) {
+        ProductDao Dao = new ProductDao();
+        
+        ProductModel prod = Dao.recoverNext(id);
+        
+        return prod.toVetor();
+    }
+    
+public String[] recoverPrevious(int id) {
+        ProductDao Dao = new ProductDao();
+        
+        ProductModel prod = Dao.recoverPrevious(id);
+        
+        return prod.toVetor();
     }
 }

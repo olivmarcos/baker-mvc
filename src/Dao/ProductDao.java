@@ -70,8 +70,6 @@ public class ProductDao {
         try {
             Connection con = Dao.FabricaConexao.GeraConexao();
             PreparedStatement stp = con.prepareStatement(sql);
-
-
             stp.setString(1, prod.getName());
             stp.setDouble(2, prod.getPrice());
             stp.setString(3, prod.getUnity());
@@ -130,4 +128,102 @@ public class ProductDao {
         }
         return null;
     }
+    
+    public ProductModel recoverLast()
+    {      
+        String sql = "SELECT MAX(prd_id) AS 'prd_id', prd_name, prd_price, prd_unity FROM TBL_PRODUCT;";
+        
+        try {
+            Connection con = Dao.FabricaConexao.GeraConexao();
+            PreparedStatement stp = con.prepareStatement(sql);
+            ResultSet result = stp.executeQuery();
+            result.next();
+            
+            ProductModel prod = new ProductModel();
+            prod.setId(Integer.parseInt(result.getString("prd_id")));
+            prod.setName(result.getString("prd_name"));
+            prod.setPrice(result.getDouble("prd_price"));
+            prod.setUnity(result.getString("prd_unity"));
+            
+            return prod;
+        } catch (SQLException e) {
+             Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
+    }
+    
+    public ProductModel recoverFirst()
+    {      
+        String sql = "SELECT MIN(prd_id) AS 'prd_id', prd_name, prd_price, prd_unity FROM TBL_PRODUCT;";
+        
+        try {
+            Connection con = Dao.FabricaConexao.GeraConexao();
+            PreparedStatement stp = con.prepareStatement(sql);
+            ResultSet result = stp.executeQuery();
+            result.next();
+            
+            ProductModel prod = new ProductModel();
+            prod.setId(Integer.parseInt(result.getString("prd_id")));
+            prod.setName(result.getString("prd_name"));
+            prod.setPrice(result.getDouble("prd_price"));
+            prod.setUnity(result.getString("prd_unity"));
+            
+            return prod;
+        } catch (SQLException e) {
+             Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
+    }
+    
+    public ProductModel recoverNext(int id)
+    {      
+        String sql = "SELECT MIN(prd_id) AS 'prd_id', prd_name, prd_price, prd_unity FROM TBL_PRODUCT WHERE prd_id > ?";
+        
+        try {
+            Connection con = Dao.FabricaConexao.GeraConexao();
+            PreparedStatement stp = con.prepareStatement(sql);
+            stp.setInt(1, id);
+
+            ResultSet result = stp.executeQuery();
+            result.next();
+            
+            ProductModel prod = new ProductModel();
+            prod.setId(Integer.parseInt(result.getString("prd_id")));
+            prod.setName(result.getString("prd_name"));
+            prod.setPrice(result.getDouble("prd_price"));
+            prod.setUnity(result.getString("prd_unity"));
+            
+            return prod;
+        } catch (SQLException e) {
+             Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
+    }
+    
+        public ProductModel recoverPrevious(int id)
+    {      
+        String sql = "SELECT MAX(prd_id) AS 'prd_id', prd_name, prd_price, prd_unity FROM TBL_PRODUCT WHERE prd_id < ?";
+        
+        try {
+            Connection con = Dao.FabricaConexao.GeraConexao();
+            PreparedStatement stp = con.prepareStatement(sql);
+            stp.setInt(1, id);
+
+            ResultSet result = stp.executeQuery();
+            result.next();
+            
+            ProductModel prod = new ProductModel();
+            prod.setId(Integer.parseInt(result.getString("prd_id")));
+            prod.setName(result.getString("prd_name"));
+            prod.setPrice(result.getDouble("prd_price"));
+            prod.setUnity(result.getString("prd_unity"));
+            
+            return prod;
+        } catch (SQLException e) {
+             Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
+    }
 }
+    
+

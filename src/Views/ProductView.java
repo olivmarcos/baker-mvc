@@ -34,10 +34,10 @@ public class ProductView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         codInput = new javax.swing.JTextField();
         btn1 = new javax.swing.JButton();
-        btn2 = new javax.swing.JButton();
-        btn3 = new javax.swing.JButton();
-        btn4 = new javax.swing.JButton();
-        btn5 = new javax.swing.JButton();
+        btnFirst = new javax.swing.JButton();
+        btnPrevious = new javax.swing.JButton();
+        btnNext = new javax.swing.JButton();
+        btnLast = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         nameInput = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -74,17 +74,37 @@ public class ProductView extends javax.swing.JFrame {
             }
         });
 
-        btn2.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
-        btn2.setText("<<");
+        btnFirst.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
+        btnFirst.setText("<<");
+        btnFirst.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnFirstMouseClicked(evt);
+            }
+        });
 
-        btn3.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
-        btn3.setText("<");
+        btnPrevious.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
+        btnPrevious.setText("<");
+        btnPrevious.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPreviousMouseClicked(evt);
+            }
+        });
 
-        btn4.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
-        btn4.setText(">");
+        btnNext.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
+        btnNext.setText(">");
+        btnNext.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNextMouseClicked(evt);
+            }
+        });
 
-        btn5.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
-        btn5.setText(">>");
+        btnLast.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
+        btnLast.setText(">>");
+        btnLast.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLastMouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jLabel2.setText("Nome");
@@ -161,13 +181,13 @@ public class ProductView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                         .addComponent(btn1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn2)
+                        .addComponent(btnFirst)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn3)
+                        .addComponent(btnPrevious)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn4)
+                        .addComponent(btnNext)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn5))
+                        .addComponent(btnLast))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -201,10 +221,10 @@ public class ProductView extends javax.swing.JFrame {
                 .addGap(66, 66, 66)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFirst, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPrevious, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLast, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -338,6 +358,106 @@ public class ProductView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_codInputActionPerformed
 
+    private void btnLastMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLastMouseClicked
+        ProductController controll = new ProductController();
+        String[] dados = controll.recoverLast();
+        
+        if(dados[0].equals("0"))
+        {
+            JOptionPane.showMessageDialog(null, "Não foi encontrado nenhum registro");
+        }
+        else
+        {
+            codInput.setText(dados[0]);
+            nameInput.setText(dados[1]);
+            priceInput.setText(dados[2]);
+            unityInput.setText(dados[3]);
+            
+            nameInput.setEnabled(true);
+            priceInput.setEnabled(true);
+            unityInput.setEnabled(true);
+            
+            btnDelete.setEnabled(true);
+        
+//            codInput.requestFocus();
+        }
+    }//GEN-LAST:event_btnLastMouseClicked
+
+    private void btnFirstMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFirstMouseClicked
+        ProductController controll = new ProductController();
+        String[] dados = controll.recoverFirst();
+        
+        if(dados[0].equals("0"))
+        {
+            JOptionPane.showMessageDialog(null, "Não foi encontrado nenhum registro");
+        }
+        else
+        {
+            codInput.setText(dados[0]);
+            nameInput.setText(dados[1]);
+            priceInput.setText(dados[2]);
+            unityInput.setText(dados[3]);
+            
+            nameInput.setEnabled(true);
+            priceInput.setEnabled(true);
+            unityInput.setEnabled(true);
+            
+            btnDelete.setEnabled(true);
+        
+//            codInput.requestFocus();
+        }
+    }//GEN-LAST:event_btnFirstMouseClicked
+
+    private void btnNextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNextMouseClicked
+        ProductController controll = new ProductController();
+        String[] dados = controll.recoverNext(Integer.parseInt(codInput.getText()));
+        
+        if(dados[0].equals("0"))
+        {
+            JOptionPane.showMessageDialog(null, "Não foi encontrado nenhum registro");
+        }
+        else
+        {
+            codInput.setText(dados[0]);
+            nameInput.setText(dados[1]);
+            priceInput.setText(dados[2]);
+            unityInput.setText(dados[3]);
+            
+            nameInput.setEnabled(true);
+            priceInput.setEnabled(true);
+            unityInput.setEnabled(true);
+            
+            btnDelete.setEnabled(true);
+        
+//            codInput.requestFocus();
+        }
+    }//GEN-LAST:event_btnNextMouseClicked
+
+    private void btnPreviousMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPreviousMouseClicked
+                ProductController controll = new ProductController();
+        String[] dados = controll.recoverPrevious(Integer.parseInt(codInput.getText()));
+        
+        if(dados[0].equals("0"))
+        {
+            JOptionPane.showMessageDialog(null, "Não foi encontrado nenhum registro");
+        }
+        else
+        {
+            codInput.setText(dados[0]);
+            nameInput.setText(dados[1]);
+            priceInput.setText(dados[2]);
+            unityInput.setText(dados[3]);
+            
+            nameInput.setEnabled(true);
+            priceInput.setEnabled(true);
+            unityInput.setEnabled(true);
+            
+            btnDelete.setEnabled(true);
+        
+//            codInput.requestFocus();
+        }
+    }//GEN-LAST:event_btnPreviousMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -382,13 +502,13 @@ public class ProductView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn1;
-    private javax.swing.JButton btn2;
-    private javax.swing.JButton btn3;
-    private javax.swing.JButton btn4;
-    private javax.swing.JButton btn5;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnFirst;
+    private javax.swing.JButton btnLast;
     private javax.swing.JButton btnNew;
+    private javax.swing.JButton btnNext;
+    private javax.swing.JButton btnPrevious;
     private javax.swing.JButton btnSave;
     private javax.swing.JTextField codInput;
     private javax.swing.JLabel jLabel1;

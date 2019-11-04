@@ -59,13 +59,13 @@
                           <EmptySpace pref="71" max="32767" attributes="0"/>
                           <Component id="btn1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="btn2" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnFirst" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btn3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnPrevious" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btn4" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnNext" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btn5" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnLast" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -112,10 +112,10 @@
                   <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btn1" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="btn2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="btn3" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="btn4" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="btn5" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="btnFirst" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="btnPrevious" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="btnNext" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="btnLast" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
@@ -176,37 +176,49 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn1ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btn2">
+        <Component class="javax.swing.JButton" name="btnFirst">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Yu Gothic UI Light" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;&lt;"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnFirstMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btn3">
+        <Component class="javax.swing.JButton" name="btnPrevious">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Yu Gothic UI Light" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnPreviousMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btn4">
+        <Component class="javax.swing.JButton" name="btnNext">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Yu Gothic UI Light" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&gt;"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnNextMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btn5">
+        <Component class="javax.swing.JButton" name="btnLast">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Yu Gothic UI Light" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&gt;&gt;"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnLastMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>

@@ -238,8 +238,9 @@ public class ClienteView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,11 +262,11 @@ public class ClienteView extends javax.swing.JFrame {
         cliSave.setEnabled(true);
         cliCancel.setEnabled(true);
         cliDelete.setEnabled(false);
-        
+
         cliNome.setEnabled(true);
         cliEndereco.setEnabled(true);
         cliCpf.setEnabled(true);
-        
+
         limparTela();
     }//GEN-LAST:event_cliNovoMouseClicked
 
@@ -273,14 +274,13 @@ public class ClienteView extends javax.swing.JFrame {
         cliDelete.requestFocus();
         ClienteController controll = new ClienteController();
         Integer cod = Integer.parseInt(cliCod.getText());
-        
-        if(controll.delete(cod))
-        {
+
+        if (controll.delete(cod)) {
             limparTela();
             JOptionPane.showMessageDialog(null, "Registro removido com sucesso");
-        }
-        else
+        } else {
             JOptionPane.showMessageDialog(null, "Erro ao remover o registro");
+        }
     }//GEN-LAST:event_cliDeleteMouseClicked
 
     private void cliCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cliCancelMouseClicked
@@ -288,47 +288,40 @@ public class ClienteView extends javax.swing.JFrame {
     }//GEN-LAST:event_cliCancelMouseClicked
 
     private void cliSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cliSaveMouseClicked
-        cliSave.requestFocus();        
+        cliSave.requestFocus();
+//        JOptionPane.showMessageDialog(null, "Ah");
         String dados[] = new String[4];
-        
+
         dados[0] = cliCod.getText();
         dados[1] = cliNome.getText();
         dados[2] = cliEndereco.getText();
         dados[3] = cliCpf.getText();
-        
+
         ClienteController controll = new ClienteController();
-        
-        if(controll.save(dados))
-        {
+        if (controll.save(dados)) {
             JOptionPane.showMessageDialog(null, "Registro inserido com sucesso");
-            limparTela();
-        }
-        else
+        } else {
             JOptionPane.showMessageDialog(null, "Registro atualizado com sucesso");
-
-
+        }
     }//GEN-LAST:event_cliSaveMouseClicked
 
     private void cliCodFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cliCodFocusLost
         ClienteController controll = new ClienteController();
         String[] dados = controll.recover(Integer.parseInt(cliCod.getText()));
-        
-        if(dados[0].equals("0"))
-        {
+
+        if (dados[0].equals("0")) {
             JOptionPane.showMessageDialog(null, "Não foi encontrado nenhum registro");
-        }
-        else
-        {
+        } else {
             cliNome.setText(dados[1]);
             cliEndereco.setText(dados[2]);
             cliCpf.setText(dados[3]);
-            
+
             cliNome.setEnabled(true);
             cliEndereco.setEnabled(true);
             cliCpf.setEnabled(true);
-            
+
             cliDelete.setEnabled(true);
-        
+
 //            codInput.requestFocus();
         }
     }//GEN-LAST:event_cliCodFocusLost
@@ -371,8 +364,8 @@ public class ClienteView extends javax.swing.JFrame {
             }
         });
     }
-    
-        public void limparTela(){
+
+    public void limparTela() {
         cliCod.setText("");
         cliNome.setText("");
         cliEndereco.setText("");

@@ -16,6 +16,7 @@ import Models.ClienteModel;
 import Models.ProductModel;
 import Models.VendedorModel;
 import Views.ClienteView;
+import Views.Home;
 import Views.ProductView;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -38,7 +39,7 @@ public class Baker {
 //        dados[3] = "122544";
 //  
 //        
-//        ClienteController controll = new ClienteController();
+//        VendedorController controll = new VendedorController();
 //
 //        controll.save(dados);
         /* String[][] products = controll.recoverAll();
@@ -102,11 +103,13 @@ public class Baker {
 //        } else {
 //            System.out.println("not ok");
 //        }
-
-        ClienteView tela = new ClienteView();
-        ProductView tela2 = new ProductView();
-
-        tela.setVisible(true);
+//
+//        ClienteView tela = new ClienteView();
+//        ProductView tela2 = new ProductView();
+        
+////        
+        Home home = new Home();
+        home.setVisible(true);
 
     }
 }

@@ -17,6 +17,7 @@ import Models.ProductModel;
 import Models.VendedorModel;
 import Views.ClienteView;
 import Views.Home;
+import Views.ProductTableView;
 import Views.ProductView;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -108,12 +109,14 @@ public class Baker {
 //        ProductView tela2 = new ProductView();
         
 ////        
-        Home home = new Home();
-        home.setVisible(true);
-       
+//        Home home = new Home();
+//        home.setVisible(true);
+//       
       /* ProductController teste = new ProductController();
        teste.recoverNext(2);*/
         
+        ProductTableView tela = new ProductTableView();
+        tela.setVisible(true);
 
 
     }

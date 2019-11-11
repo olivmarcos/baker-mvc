@@ -7,6 +7,8 @@ package Views;
 
 import Controller.ProductController;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -30,6 +32,7 @@ public class ProductView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         codInput = new javax.swing.JTextField();
@@ -50,6 +53,17 @@ public class ProductView extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
@@ -68,6 +82,11 @@ public class ProductView extends javax.swing.JFrame {
 
         btn1.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         btn1.setText("?");
+        btn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn1MouseClicked(evt);
+            }
+        });
         btn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn1ActionPerformed(evt);
@@ -95,6 +114,11 @@ public class ProductView extends javax.swing.JFrame {
         btnNext.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnNextMouseClicked(evt);
+            }
+        });
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
             }
         });
 
@@ -429,7 +453,7 @@ public class ProductView extends javax.swing.JFrame {
             
             btnDelete.setEnabled(true);
         
-//            codInput.requestFocus();
+            codInput.requestFocus();
         }
     }//GEN-LAST:event_btnNextMouseClicked
 
@@ -457,6 +481,17 @@ public class ProductView extends javax.swing.JFrame {
 //            codInput.requestFocus();
         }
     }//GEN-LAST:event_btnPreviousMouseClicked
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn1MouseClicked
+        ProductTableView tela = new ProductTableView();
+        tela.setVisible(true);
+        
+        
+    }//GEN-LAST:event_btn1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -517,6 +552,7 @@ public class ProductView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField nameInput;
     private javax.swing.JTextField priceInput;
     private javax.swing.JTextField unityInput;

@@ -36,7 +36,7 @@ public class ProductTableView extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboBox = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         value = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
@@ -56,7 +56,7 @@ public class ProductTableView extends javax.swing.JFrame {
 
         jLabel1.setText("Qual o campo da pesquisa?");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Código", "Nome", "Preço", "Unidade" }));
 
         jLabel2.setText("Qual valor?");
 
@@ -90,7 +90,7 @@ public class ProductTableView extends javax.swing.JFrame {
                                             .addGap(170, 170, 170)))
                                     .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(comboBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(180, 180, 180)
                         .addComponent(brnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -102,7 +102,7 @@ public class ProductTableView extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jLabel2)
                 .addGap(10, 10, 10)
@@ -137,26 +137,73 @@ public class ProductTableView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchMouseClicked
-       DefaultTableModel padrao = (DefaultTableModel) jTable1.getModel();
-       ProductController controll = new ProductController();
-       
-       Vector vetor = new Vector();
-       
-        String[] dados = controll.recover(Integer.parseInt(value.getText()));
-        
-        if(dados[0].equals("0"))
-        {
-            JOptionPane.showMessageDialog(null, "Não foi encontrado nenhum registro");
-        }
-        else
-        {
+
+        if (comboBox.getSelectedIndex() == 0) {
+            DefaultTableModel padrao = (DefaultTableModel) jTable1.getModel();
+
+            ProductController controll = new ProductController();
+
+            Vector vetor = new Vector();
+
+            String[] dados = controll.recover(Integer.parseInt(value.getText()));
+
             vetor.add(dados[0]);
-            vetor.add((dados[1]));
+            vetor.add(dados[1]);
             vetor.add(dados[2]);
             vetor.add(dados[3]);
-            
+
             padrao.addRow(vetor);
+        } else if (comboBox.getSelectedIndex() == 1) {
+            DefaultTableModel padrao = (DefaultTableModel) jTable1.getModel();
+
+            ProductController controll = new ProductController();
+
+            Vector vetor = new Vector();
+
+            String[] dados = controll.recoverByName(value.getText());
+
+            vetor.add(dados[0]);
+            vetor.add(dados[1]);
+            vetor.add(dados[2]);
+            vetor.add(dados[3]);
+
+            padrao.addRow(vetor);
+        } else if (comboBox.getSelectedIndex() == 2) {
+            DefaultTableModel padrao = (DefaultTableModel) jTable1.getModel();
+
+            ProductController controll = new ProductController();
+
+            Vector vetor = new Vector();
+
+            String[] dados = controll.recoverByPrice((Double.parseDouble(value.getText())));
+
+            vetor.add(dados[0]);
+            vetor.add(dados[1]);
+            vetor.add(dados[2]);
+            vetor.add(dados[3]);
+
+            padrao.addRow(vetor);
+        } else if (comboBox.getSelectedIndex() == 3) {
+            DefaultTableModel padrao = (DefaultTableModel) jTable1.getModel();
+
+            ProductController controll = new ProductController();
+
+            Vector vetor = new Vector();
+
+            String[][] dados = controll.recoverAll(value.getText());
+
+            for (int i = 0; i < dados.length; i++) {
+                vetor.add(dados[0]);
+                vetor.add(dados[1]);
+                vetor.add(dados[2]);
+                vetor.add(dados[3]);
+                padrao.addRow(vetor);
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Erro!");
         }
+
     }//GEN-LAST:event_btnSearchMouseClicked
 
     /**
@@ -197,7 +244,7 @@ public class ProductTableView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton brnConfirm;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> comboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

@@ -67,7 +67,7 @@
                                       <Component id="btnSearch" min="-2" pref="97" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBox1" alignment="0" min="-2" pref="186" max="-2" attributes="0"/>
+                                  <Component id="comboBox" alignment="0" min="-2" pref="186" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -86,7 +86,7 @@
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                  <Component id="comboBox" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -157,14 +157,14 @@
             <Property name="text" type="java.lang.String" value="Qual o campo da pesquisa?"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="comboBox">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
+                <StringItem index="0" value="C&#xf3;digo"/>
+                <StringItem index="1" value="Nome"/>
+                <StringItem index="2" value="Pre&#xe7;o"/>
+                <StringItem index="3" value="Unidade"/>
               </StringArray>
             </Property>
           </Properties>

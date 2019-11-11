@@ -117,7 +117,9 @@ public class Baker {
         
         ProductTableView tela = new ProductTableView();
         tela.setVisible(true);
-
+        
+//        ProductDao teste = new ProductDao();
+//        teste.recoverByName("Teste09");
 
     }
 }

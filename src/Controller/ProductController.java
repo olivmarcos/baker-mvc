@@ -38,6 +38,30 @@ public class ProductController {
         return prod.toVetor();
     }
     
+    public String[] recoverByName(String name) {
+        ProductDao Dao = new ProductDao();
+        
+        ProductModel prod = Dao.recoverByName(name);
+        
+        return prod.toVetor();
+    }
+
+    public String[] recoverByPrice(Double price) {
+        ProductDao Dao = new ProductDao();
+        
+        ProductModel prod = Dao.recoverByPrice(price);
+        
+        return prod.toVetor();
+    }
+ 
+    public String[] recoverByUni(String uni) {
+        ProductDao Dao = new ProductDao();
+        
+        ProductModel prod = Dao.recoverByUni(uni);
+        
+        return prod.toVetor();
+    }
+    
     public void update(String[] dados) {
         ProductModel prod = new ProductModel();
         prod.vetorTo(dados);
@@ -59,10 +83,10 @@ public class ProductController {
         return false;
     }
     
-    public String[][] recoverAll() {
+    public String[][] recoverAll(String uni) {
         ProductDao Dao = new ProductDao();
         
-        ArrayList<ProductModel> listProduct = Dao.recoverAll();
+        ArrayList<ProductModel> listProduct = Dao.recoverAll(uni);
         
         String[][] matrizReturn = new String[listProduct.size()][4];
         for (int i = 0; i < listProduct.size(); i++) {

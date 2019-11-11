@@ -193,11 +193,7 @@ public class ProductTableView extends javax.swing.JFrame {
             String[][] dados = controll.recoverAll(value.getText());
 
             for (int i = 0; i < dados.length; i++) {
-                vetor.add(dados[0]);
-                vetor.add(dados[1]);
-                vetor.add(dados[2]);
-                vetor.add(dados[3]);
-                padrao.addRow(vetor);
+                padrao.addRow(dados[i]);
             }
 
         } else {

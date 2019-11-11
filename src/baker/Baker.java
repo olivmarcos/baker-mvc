@@ -40,10 +40,10 @@ public class Baker {
 //        dados[3] = "122544";
 //  
 //        
-//        VendedorController controll = new VendedorController();
+       // VendedorController controll = new VendedorController();
 //
 //        controll.save(dados);
-        /* String[][] products = controll.recoverAll();
+       /*  String[][] products = controll.recoverAll();
         for (int i = 0; i < products.length; i++) {
             System.out.println("" + products[i][0]);
         }*/

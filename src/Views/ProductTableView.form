@@ -191,6 +191,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Confirmar"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="brnConfirmMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

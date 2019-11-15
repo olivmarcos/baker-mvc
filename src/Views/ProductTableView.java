@@ -68,6 +68,11 @@ public class ProductTableView extends javax.swing.JFrame {
         });
 
         brnConfirm.setText("Confirmar");
+        brnConfirm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                brnConfirmMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -140,7 +145,7 @@ public class ProductTableView extends javax.swing.JFrame {
 
         if (comboBox.getSelectedIndex() == 0) {
             DefaultTableModel padrao = (DefaultTableModel) jTable1.getModel();
-
+            padrao.setNumRows(0);
             ProductController controll = new ProductController();
 
             Vector vetor = new Vector();
@@ -151,46 +156,37 @@ public class ProductTableView extends javax.swing.JFrame {
             vetor.add(dados[1]);
             vetor.add(dados[2]);
             vetor.add(dados[3]);
-
+            
             padrao.addRow(vetor);
         } else if (comboBox.getSelectedIndex() == 1) {
             DefaultTableModel padrao = (DefaultTableModel) jTable1.getModel();
+            padrao.setNumRows(0);
 
             ProductController controll = new ProductController();
+            
+            String[][] dados = controll.recoverByName(value.getText());
 
-            Vector vetor = new Vector();
-
-            String[] dados = controll.recoverByName(value.getText());
-
-            vetor.add(dados[0]);
-            vetor.add(dados[1]);
-            vetor.add(dados[2]);
-            vetor.add(dados[3]);
-
-            padrao.addRow(vetor);
+            for (int i = 0; i < dados.length; i++) {
+                padrao.addRow(dados[i]);
+            }
         } else if (comboBox.getSelectedIndex() == 2) {
             DefaultTableModel padrao = (DefaultTableModel) jTable1.getModel();
+            padrao.setNumRows(0);
 
             ProductController controll = new ProductController();
 
-            Vector vetor = new Vector();
+            String[][] dados = controll.recoverByPrice(Double.parseDouble(value.getText()));
 
-            String[] dados = controll.recoverByPrice((Double.parseDouble(value.getText())));
-
-            vetor.add(dados[0]);
-            vetor.add(dados[1]);
-            vetor.add(dados[2]);
-            vetor.add(dados[3]);
-
-            padrao.addRow(vetor);
+            for (int i = 0; i < dados.length; i++) {
+                padrao.addRow(dados[i]);
+            }
         } else if (comboBox.getSelectedIndex() == 3) {
             DefaultTableModel padrao = (DefaultTableModel) jTable1.getModel();
+            padrao.setNumRows(0);
 
             ProductController controll = new ProductController();
 
-            Vector vetor = new Vector();
-
-            String[][] dados = controll.recoverAll(value.getText());
+            String[][] dados = controll.recoverByUni(value.getText());
 
             for (int i = 0; i < dados.length; i++) {
                 padrao.addRow(dados[i]);
@@ -201,6 +197,17 @@ public class ProductTableView extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnSearchMouseClicked
+
+    private void brnConfirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_brnConfirmMouseClicked
+        DefaultTableModel padrao = (DefaultTableModel) jTable1.getModel();
+        
+        int linha = jTable1.getSelectedRow();
+
+        System.out.println(padrao.getValueAt(linha, 0) + "\n"
+                + padrao.getValueAt(linha, 1) + "\n"
+                + padrao.getValueAt(linha, 2) + "\n"
+                + padrao.getValueAt(linha, 3) + "\n" );
+    }//GEN-LAST:event_brnConfirmMouseClicked
 
     /**
      * @param args the command line arguments

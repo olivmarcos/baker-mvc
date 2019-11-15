@@ -64,74 +64,98 @@ public class ProductDao {
         return null;
     }
     
-    public ProductModel recoverByName(String name) {
-        
+    public ArrayList<ProductModel> recoverByName(String name) {
         String sql = "SELECT prd_id, prd_name, prd_price, prd_unity FROM TBL_PRODUCT WHERE prd_name = ?";
+        ArrayList<ProductModel> products = new ArrayList<ProductModel>();
         
         try {
             Connection con = Dao.FabricaConexao.GeraConexao();
             PreparedStatement stp = con.prepareStatement(sql);
+            
             stp.setString(1, name);
+
             ResultSet result = stp.executeQuery();
-            result.next();
-            
-            ProductModel prod = new ProductModel();
-            prod.setId(Integer.parseInt(result.getString("prd_id")));
-            prod.setName(result.getString("prd_name"));
-            prod.setPrice(result.getDouble("prd_price"));
-            prod.setUnity(result.getString("prd_unity"));
-            
-            return prod;
-        } catch (SQLException e) {
-             Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, e);
+           
+            while (result.next())
+            {
+                ProductModel prod = new ProductModel();
+
+                prod.setId(result.getInt("prd_id"));
+                prod.setName(result.getString("prd_name"));
+                prod.setPrice(result.getDouble("prd_price"));
+                prod.setUnity(result.getString("prd_unity"));
+        
+                products.add(prod);
+            }
+            return products;
+
+        } catch (SQLException ex) {
+
+            System.err.println(ex.getMessage());
         }
         return null;
     }
  
-    public ProductModel recoverByPrice(Double price) {
-        
+    public ArrayList<ProductModel> recoverByPrice(double price) {
         String sql = "SELECT prd_id, prd_name, prd_price, prd_unity FROM TBL_PRODUCT WHERE prd_price = ?";
+        ArrayList<ProductModel> products = new ArrayList<ProductModel>();
         
         try {
             Connection con = Dao.FabricaConexao.GeraConexao();
             PreparedStatement stp = con.prepareStatement(sql);
+            
             stp.setDouble(1, price);
+
             ResultSet result = stp.executeQuery();
-            result.next();
-            
-            ProductModel prod = new ProductModel();
-            prod.setId(Integer.parseInt(result.getString("prd_id")));
-            prod.setName(result.getString("prd_name"));
-            prod.setPrice(result.getDouble("prd_price"));
-            prod.setUnity(result.getString("prd_unity"));
-            
-            return prod;
-        } catch (SQLException e) {
-             Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, e);
+           
+            while (result.next())
+            {
+                ProductModel prod = new ProductModel();
+
+                prod.setId(result.getInt("prd_id"));
+                prod.setName(result.getString("prd_name"));
+                prod.setPrice(result.getDouble("prd_price"));
+                prod.setUnity(result.getString("prd_unity"));
+        
+                products.add(prod);
+            }
+            return products;
+
+        } catch (SQLException ex) {
+
+            System.err.println(ex.getMessage());
         }
         return null;
     }
     
-    public ProductModel recoverByUni(String uni) {
-        
+    public ArrayList<ProductModel> recoverByUni(String uni) {
         String sql = "SELECT prd_id, prd_name, prd_price, prd_unity FROM TBL_PRODUCT WHERE prd_unity = ?";
+        ArrayList<ProductModel> products = new ArrayList<ProductModel>();
         
         try {
             Connection con = Dao.FabricaConexao.GeraConexao();
             PreparedStatement stp = con.prepareStatement(sql);
+            
             stp.setString(1, uni);
+
             ResultSet result = stp.executeQuery();
-            result.next();
-            
-            ProductModel prod = new ProductModel();
-            prod.setId(Integer.parseInt(result.getString("prd_id")));
-            prod.setName(result.getString("prd_name"));
-            prod.setPrice(result.getDouble("prd_price"));
-            prod.setUnity(result.getString("prd_unity"));
-            
-            return prod;
-        } catch (SQLException e) {
-             Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, e);
+           
+            while (result.next())
+            {
+                ProductModel prod = new ProductModel();
+
+                prod.setId(result.getInt("prd_id"));
+                prod.setName(result.getString("prd_name"));
+                prod.setPrice(result.getDouble("prd_price"));
+                prod.setUnity(result.getString("prd_unity"));
+        
+                products.add(prod);
+            }
+            return products;
+
+        } catch (SQLException ex) {
+
+            System.err.println(ex.getMessage());
         }
         return null;
     }
@@ -171,15 +195,14 @@ public class ProductDao {
         return false;
     }
     
-    public ArrayList<ProductModel> recoverAll(String uni) {
-        String sql = "SELECT prd_id, prd_name, prd_price, prd_unity FROM TBL_PRODUCT WHERE prd_unity = ?";
+    public ArrayList<ProductModel> recoverAll() {
+        String sql = "SELECT prd_id, prd_name, prd_price, prd_unity FROM TBL_PRODUCT";
         ArrayList<ProductModel> products = new ArrayList<ProductModel>();
         
         try {
             Connection con = Dao.FabricaConexao.GeraConexao();
             PreparedStatement stp = con.prepareStatement(sql);
-            
-            stp.setString(1, uni);
+   
 
             ResultSet result = stp.executeQuery();
            

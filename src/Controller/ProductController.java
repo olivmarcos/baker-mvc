@@ -38,28 +38,40 @@ public class ProductController {
         return prod.toVetor();
     }
     
-    public String[] recoverByName(String name) {
+    public String[][] recoverByName(String name) {
         ProductDao Dao = new ProductDao();
         
-        ProductModel prod = Dao.recoverByName(name);
+        ArrayList<ProductModel> listProduct = Dao.recoverByName(name);
         
-        return prod.toVetor();
+        String[][] matrizReturn = new String[listProduct.size()][4];
+        for (int i = 0; i < listProduct.size(); i++) {
+            matrizReturn[i] = listProduct.get(i).toVetor();
+        }
+        return matrizReturn;
     }
 
-    public String[] recoverByPrice(Double price) {
+    public String[][] recoverByPrice(double price) {
         ProductDao Dao = new ProductDao();
         
-        ProductModel prod = Dao.recoverByPrice(price);
+        ArrayList<ProductModel> listProduct = Dao.recoverByPrice(price);
         
-        return prod.toVetor();
+        String[][] matrizReturn = new String[listProduct.size()][4];
+        for (int i = 0; i < listProduct.size(); i++) {
+            matrizReturn[i] = listProduct.get(i).toVetor();
+        }
+        return matrizReturn;
     }
  
-    public String[] recoverByUni(String uni) {
+    public String[][] recoverByUni(String uni) {
         ProductDao Dao = new ProductDao();
         
-        ProductModel prod = Dao.recoverByUni(uni);
+        ArrayList<ProductModel> listProduct = Dao.recoverByUni(uni);
         
-        return prod.toVetor();
+        String[][] matrizReturn = new String[listProduct.size()][4];
+        for (int i = 0; i < listProduct.size(); i++) {
+            matrizReturn[i] = listProduct.get(i).toVetor();
+        }
+        return matrizReturn;
     }
     
     public void update(String[] dados) {
@@ -83,10 +95,10 @@ public class ProductController {
         return false;
     }
     
-    public String[][] recoverAll(String uni) {
+    public String[][] recoverAll() {
         ProductDao Dao = new ProductDao();
         
-        ArrayList<ProductModel> listProduct = Dao.recoverAll(uni);
+        ArrayList<ProductModel> listProduct = Dao.recoverAll();
         
         String[][] matrizReturn = new String[listProduct.size()][4];
         for (int i = 0; i < listProduct.size(); i++) {

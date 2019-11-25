@@ -10,9 +10,11 @@ import Controller.ProductController;
 import Controller.VendedorController;
 import Dao.ClienteDao;
 import Dao.FabricaConexao;
+import Dao.PedidoDao;
 import Dao.ProductDao;
 import Dao.VendedorDao;
 import Models.ClienteModel;
+import Models.PedidoModel;
 import Models.ProductModel;
 import Models.VendedorModel;
 import Views.ClienteView;
@@ -109,8 +111,8 @@ public class Baker {
 //        ProductView tela2 = new ProductView();
         
 ////        
-        Home home = new Home();
-        home.setVisible(true);
+//        Home home = new Home();
+//        home.setVisible(true);
 //       
       /* ProductController teste = new ProductController();
        teste.recoverNext(2);*/
@@ -120,6 +122,20 @@ public class Baker {
         
 //        ProductDao teste = new ProductDao();
 //        teste.recoverByName("Teste09");
+
+        PedidoModel pedido = new PedidoModel();
+        
+        pedido.setClienteId(7);
+        pedido.setProdutoId(5);
+        pedido.setVendedorId(5);
+        
+        PedidoDao dao = new PedidoDao();
+        if(dao.save(pedido))
+        {
+            System.out.println("ok");
+        }
+        else
+            System.out.println("not ok");
 
     }
 }

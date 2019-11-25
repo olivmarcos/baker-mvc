@@ -16,11 +16,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ProductView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ProductView
-     */
+    private String[] dados;
+    private ProductController controll;
+    
     public ProductView() {
         initComponents();
+        this.dados = new String[4];
+        this.controll = new ProductController();
     }
 
     /**
@@ -487,10 +489,10 @@ public class ProductView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn1MouseClicked
-        ProductTableView tela = new ProductTableView();
+        String[] vetor = new String[4];
+        ProductTableView tela = new ProductTableView(codInput, nameInput, priceInput, unityInput);
         tela.setVisible(true);
-        
-        
+       
     }//GEN-LAST:event_btn1MouseClicked
 
     /**

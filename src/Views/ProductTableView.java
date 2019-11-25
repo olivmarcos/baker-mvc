@@ -8,6 +8,7 @@ package Views;
 import Controller.ProductController;
 import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,11 +17,23 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ProductTableView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ProductTableView
-     */
-    public ProductTableView() {
+    private String[] vetor;
+    private JTextField Codigo;
+    private JTextField Nome;
+    private JTextField Preco;
+    private JTextField Unidade;
+    
+    public ProductTableView(JTextField Codigo, JTextField Nome, JTextField Preco, JTextField Undiade) {
         initComponents();
+        this.vetor = new String[4];
+        this.Codigo = Codigo;
+        this.Nome = Nome;
+        this.Preco = Preco;
+        this.Unidade = Undiade;
+    }
+
+    private ProductTableView() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -71,6 +84,11 @@ public class ProductTableView extends javax.swing.JFrame {
         brnConfirm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 brnConfirmMouseClicked(evt);
+            }
+        });
+        brnConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                brnConfirmActionPerformed(evt);
             }
         });
 
@@ -200,14 +218,21 @@ public class ProductTableView extends javax.swing.JFrame {
 
     private void brnConfirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_brnConfirmMouseClicked
         DefaultTableModel padrao = (DefaultTableModel) jTable1.getModel();
-        
         int linha = jTable1.getSelectedRow();
-
-        System.out.println(padrao.getValueAt(linha, 0) + "\n"
-                + padrao.getValueAt(linha, 1) + "\n"
-                + padrao.getValueAt(linha, 2) + "\n"
-                + padrao.getValueAt(linha, 3) + "\n" );
+        if (linha > -1) {
+            this.Codigo.setText((String) padrao.getValueAt(linha, 0));
+            this.Nome.setText((String) padrao.getValueAt(linha, 1));
+            this.Preco.setText((String) padrao.getValueAt(linha, 2));
+            this.Unidade.setText((String) padrao.getValueAt(linha, 3));
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Nenhuma Linha Selecionada!");
+        }
     }//GEN-LAST:event_brnConfirmMouseClicked
+
+    private void brnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brnConfirmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_brnConfirmActionPerformed
 
     /**
      * @param args the command line arguments

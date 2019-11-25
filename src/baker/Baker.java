@@ -109,14 +109,14 @@ public class Baker {
 //        ProductView tela2 = new ProductView();
         
 ////        
-//        Home home = new Home();
-//        home.setVisible(true);
+        Home home = new Home();
+        home.setVisible(true);
 //       
       /* ProductController teste = new ProductController();
        teste.recoverNext(2);*/
         
-        ProductTableView tela = new ProductTableView();
-        tela.setVisible(true);
+//        ProductTableView tela = new ProductTableView();
+//        tela.setVisible(true);
         
 //        ProductDao teste = new ProductDao();
 //        teste.recoverByName("Teste09");
